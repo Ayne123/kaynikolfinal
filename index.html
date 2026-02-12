@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: pink; overflow: hidden;">
+    <div>
+        <h1>Will you be my Valentines?❤️</h1>
+        <button id="Yes">Yes!</button>
+        <button id="No">No</button>
+    </div>
+     <img src="IMG_20260212_205543_014.jpg" alt="niks" width="150px"
+     style="position: absolute; top: 150px; left: 950px;" >
+     <img src="IMG_20260212_205545_253.jpg" alt="nikol" width="150px"
+     style="position: absolute; top: 150px; left: 10px;">
+     <div class="hearts"></div>
+ 
+    <style>
+        
+.hearts{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* EACH HEART */
+.heart{
+    position:absolute;
+    top:-20px;
+    color:red;
+    font-size:20px;
+    animation: fall linear forwards;
+}
+
+/* FALL ANIMATION */
+@keyframes fall{
+    to{
+        transform: translateY(110vh);
+        opacity:0;
+    }
+}
+
+        h1 {
+            font-size: 50px;
+        }
+
+        button {
+            color: black;   
+            font-size: 15px;
+            padding: 5px;
+
+        }
+
+        div {
+            
+            margin-top: 200px;
+            text-align: center;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        #No {
+            background-color: red;
+            margin-left: 5px;
+            position: fixed;
+        }
+
+        #Yes:hover {
+            background-color: green;
+            animation: pulse 0.5s infinite;
+        }
+
+        #Yes {
+            animation: pulse 0.5s infinite;
+            background-color: green;
+            
+        }
+        img{
+    width: 250px;
+
+    
+    position: absolute;
+    top: 120px;
+    left: 300px;
+
+    
+    border: 8px solid white;
+    border-radius: 20px;
+
+    
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+    
+    margin: 20px;
+
+    
+    transition: 0.3s;
+  }
+
+
+ img:hover{
+    transform: scale(1.08);
+    border-color: yellow;
+ }
+        
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script>
+        document.getElementById("Yes").addEventListener("click", function () {
+            alert("YAYYYY! See you soon ❤️");
+             alert("Backburner 😛");
+        });
+        var b = document.getElementById("No")
+        b.addEventListener("mouseenter", change);
+        function change() {
+
+            
+            var maxX = window.innerWidth - b.offsetWidth;
+            var maxY = window.innerHeight - b.offsetHeight;
+
+            
+            if (maxX < 0) maxX = 0;
+            if (maxY < 0) maxY = 0;
+
+            var i = Math.random() * maxX;
+            var j = Math.random() * maxY;
+
+            b.style.left = i + "px";
+            b.style.top = j + "px";
+        }
+        // raining hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (15 + Math.random()*25) + "px";
+    heart.style.animationDuration = (3 + Math.random()*4) + "s";
+
+    document.querySelector(".hearts").appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart, 200);
+
+    </script>
+
+</body>
+
+</html>
